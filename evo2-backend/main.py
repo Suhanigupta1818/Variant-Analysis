@@ -1,4 +1,4 @@
-import sys
+
 
 import modal
 
@@ -12,7 +12,7 @@ class VariantRequest(BaseModel):
 
 evo2_image = (
     modal.Image.from_registry(
-        "nvidia/cuda:13.0.0-devel-ubuntu22.04", add_python="3.12"
+        "nvidia/cuda:12.4.0-devel-ubuntu22.04", add_python="3.12"
     )
     .apt_install(
         ["build-essential", "cmake", "ninja-build",
@@ -23,8 +23,6 @@ evo2_image = (
         "CXX": "/usr/bin/g++",
     })
     .run_commands("git clone --recurse-submodules https://github.com/ArcInstitute/evo2.git && cd evo2 && pip install .")
-    .run_commands("pip uninstall -y transformer-engine transformer_engine")
-    .run_commands("pip install 'transformer_engine[pytorch]==1.13' --no-build-isolation")
     .pip_install_from_requirements("requirements.txt")
 )
 
@@ -363,6 +361,4 @@ def main():
     }
 
     response = requests.post(url, json=payload, headers=headers)
-    response.raise_for_status()
-    result = response.json()
-    print(result)
+    response.raise_for_status
