@@ -1,7 +1,13 @@
-fastapi[standard]
-modal
-matplotlib
+gradio>=5.0,<6
+spaces
+requests
+numpy
 pandas
+openpyxl
+biopython
+matplotlib
 seaborn
 scikit-learn
-openpyxl
+torch>=2.8,<2.14
+flash-attn==2.8.0.post2
+git+https://github.com/ArcInstitute/evo2.git
