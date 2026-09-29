@@ -12,7 +12,7 @@ class VariantRequest(BaseModel):
 
 evo2_image = (
     modal.Image.from_registry(
-        "nvidia/cuda:12.4.0-devel-ubuntu22.04", add_python="3.12"
+        "nvidia/cuda:13.0.0-devel-ubuntu22.04", add_python="3.12"
     )
     .apt_install(
         ["build-essential", "cmake", "ninja-build",
